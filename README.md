@@ -15,6 +15,17 @@ git clone https://github.com/Waf-Interface/Installer
 cd Installer
 ```
 - **Start the installer**: Install it using this command( make sure you are a root user):
+First create a evnv for running the installer:
+```
+pip3 install virtualenv
+python3 -m virtualenv venv
+source venv/bin/activate
+```
+After activating the virutal env make sure install the rich lib,we are using rich lib to make the installer looks great(somehow..):
+```
+pip install rich
+```
+Then just run your installer!:
 ```
 python3 installer.py
 ```
