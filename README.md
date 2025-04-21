@@ -77,3 +77,6 @@ We are naming waf-gh<[f] frontend ,[b] backend, [c] controller, [m] manager> for
 
 **Creator: mortza mansori**
 ***Team: Dadeh Pardazan Oxin***
+
+## License
+This project is licensed under the [MIT License](LICENSE).
