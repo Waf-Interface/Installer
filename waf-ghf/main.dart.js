@@ -102396,7 +102396,7 @@ s=$.aYx()
 q=A.a([new A.CV(new A.amu(),n)],t.tc)
 p=A.o("ModSec Admin Panel")
 o=r?A.me(B.aV,n,n).Xs(B.e,B.Fr,B.Ih,B.e,B.Gz,A.aTV(A.me(B.aV,n,n).p2.Wt(B.r))):A.me(B.I,n,n).Xs(B.at,B.Fq,B.Ii,B.e,B.FR,A.aTV(A.me(B.I,n,n).p2.Wt(B.e)))
-return new A.rZ("/home",q,p,o,new A.avK(),!1,new A.Rz(),s,n)},
+return new A.rZ("/login",q,p,o,new A.avK(),!1,new A.Rz(),s,n)},
 $S:685}
 A.amu.prototype={
 $1(a){$.C()
