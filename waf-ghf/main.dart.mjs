@@ -808,10 +808,7 @@ _9793: x0 => x0.size,
 _9801: x0 => x0.name,
 _9808: x0 => x0.length,
 _9823: x0 => x0.result,
-_12794: (x0,x1) => x0.display = x1,
-_14824: () => globalThis.navigator,
-_14826: x0 => x0.platform,
-_14827: x0 => x0.maxTouchPoints
+_12794: (x0,x1) => x0.display = x1
     };
 
     const baseImports = {
