@@ -72,7 +72,7 @@ routes = [
     },
     {
         "router": interface_router,
-        "prefix": "/api/interface",
+        "prefix": "/api",
         "dependencies": [Depends(verify_token)]
     },
     {
