@@ -28,7 +28,7 @@ UPLOAD_DIRECTORY = 'Uploads'
 NGINX_CONF_DIRECTORY = '/usr/local/nginx/conf'
 NGINX_HTML_DIRECTORY = '/usr/local/nginx/html'
 NGINX_BIN = '/usr/local/nginx/sbin/nginx'
-APACHE_CONF_DIRECTORY = '/etc/apache2/sites-available'  
+APACHE_CONF_DIRECTORY = '/etc/apache2/sites-available'  # Kept for cleanup of legacy Apache configs
 
 os.makedirs(UPLOAD_DIRECTORY, exist_ok=True)
 
@@ -73,11 +73,9 @@ server {{
     listen {vip}:443 ssl;
     server_name {domain};
     
-    # SSL Configuration - Use your own certificates for production
     ssl_certificate /etc/waf-ssl/waf.crt;
     ssl_certificate_key /etc/waf-ssl/waf.key;
     
-    # Document root for static files
     root {doc_root};
     index index.html index.htm;
     
@@ -86,27 +84,6 @@ server {{
     add_header X-Content-Type-Options "nosniff";
     add_header X-XSS-Protection "1; mode=block";
     {waf_config}
-    # Pass API and WebSocket requests to the FastAPI backend
-    location /api/ {{
-        proxy_pass http://127.0.0.1:8081;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }}
-
-    location /ws {{
-        proxy_pass http://127.0.0.1:8081;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "upgrade";
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_read_timeout 86400;
-    }}
-
     # Serve static files directly
     location / {{
         try_files $uri $uri/ /index.html;
